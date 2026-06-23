@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Mascota - PetCare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Estilos específicos para el formulario */
+        .form-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        
+        .photo-upload {
+            width: 150px;
+            height: 150px;
+            border: 3px dashed var(--pearl-agua);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            background-color: var(--alice-blue);
+            transition: 0.3s;
+        }
+
+        .photo-upload:hover {
+            background-color: var(--light-blue);
+            border-color: var(--blue-slate);
+        }
+
+        .photo-upload img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Se muestra al cargar imagen */
+        }
+
+        .photo-upload i {
+            color: var(--pearl-agua);
+            font-size: 2rem;
+        }
+
+        .section-title {
+            color: var(--tangerine-dream);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--alice-blue);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            color: var(--blue-slate);
+            font-weight: 500;
+        }
+
+        .form-control, .form-select {
+            border-color: var(--light-blue);
+            border-radius: 10px;
+        }
+
+        .form-control:focus {
+            border-color: var(--pearl-agua);
+            box-shadow: 0 0 0 0.25rem rgba(131, 197, 190, 0.25);
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sticky-top custom-navbar mb-4">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">🐾 PetCare</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="d-flex ms-auto align-items-center mt-3 mt-lg-0">
+                <a href="mis-mascotas.html" class="btn btn-outline-secondary me-2 rounded-pill btn-sm-custom">
+                    Mis Mascotas
+                </a>
+                <button class="btn btn-custom-primary rounded-pill btn-sm-custom" type="button">
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="text-center fw-bold mb-4" style="color: var(--blue-slate);">Registrar Nueva Mascota</h2>
+            
+            <form action="#" method="POST" enctype="multipart/form-data">
+                
+                <div class="text-center">
+                    <label for="pet-photo" class="form-label d-block">Foto de la mascota</label>
+                    <div class="photo-upload" onclick="document.getElementById('pet-photo').click()">
+                        <span id="upload-icon">📸</span>
+                        <img id="preview" src="assets/foto_mascota.jpg" alt="Vista previa">
+                    </div>
+                    <input type="file" id="pet-photo" name="photo" accept="image/*" hidden onchange="previewImage(event)">
+                </div>
+
+                <div class="section-title">Información Básica</div>
+                
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Nombre de la mascota</label>
+                        <input type="text" class="form-control" placeholder="Ej: Toby" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Especie</label>
+                        <select class="form-select" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                            <option value="ave">Ave</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Raza</label>
+                        <input type="text" class="form-control" placeholder="Ej: Golden Retriever">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="section-title mt-4">Detalles Médicos</div>
+                
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Peso (kg)</label>
+                        <input type="number" step="0.1" class="form-control" placeholder="0.0">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Sexo</label>
+                        <select class="form-select">
+                            <option value="m">Macho</option>
+                            <option value="h">Hembra</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Esterilizado</label>
+                        <select class="form-select">
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Alergias o notas importantes</label>
+                        <textarea class="form-control" rows="3" placeholder="Ej: Alérgico a la penicilina..."></textarea>
+                    </div>
+                </div>
+
+                <div class="mt-5 d-flex gap-3">
+                    <button type="button" class="btn btn-outline-secondary w-100 rounded-pill">Cancelar</button>
+                    <button type="submit" class="btn btn-custom-primary w-100 rounded-pill">Guardar Mascota</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const output = document.getElementById('preview');
+                const icon = document.getElementById('upload-icon');
+                output.src = reader.result;
+                output.style.display = 'block';
+                icon.style.display = 'none';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>

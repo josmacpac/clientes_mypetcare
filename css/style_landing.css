@@ -1,0 +1,183 @@
+:root {
+    --powder-blush: #FFA69E;
+    --alice-blue: #edf6f9;
+    --pearl-agua: #83c5be;
+    --light-blue: #AED9E0;
+    --blue-slate: #5E6472;
+    --white: #ffffff;
+    --tangerine-dream: #e29578;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Esto evita que el Navbar tape el título al bajar */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--blue-slate);
+}
+
+/* Navbar */
+.navbar-brand { color: var(--pearl-agua) !important; }
+.nav-link { color: var(--blue-slate); font-weight: 500; }
+
+/* Botones */
+.btn-custom-primary {
+    background-color: var(--powder-blush);
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+.btn-custom-primary:hover {
+    background-color: var(--tangerine-dream);
+    color: white;
+    transform: translateY(-2px);
+}
+.btn-outline-secondary {
+    color: var(--pearl-agua);
+    border-color: var(--pearl-agua);
+}
+
+/* Hero Section con imagen de Mascota */
+.hero-header {
+    min-height: 80vh;
+    background: linear-gradient(rgba(94, 100, 114, 0.6), rgba(94, 100, 114, 0.6)), 
+                url('../assets/hero1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Mockups */
+.bg-alice-blue { background-color: var(--alice-blue); }
+
+.mockup-img {
+    background-color: transparent !important;
+    border-radius: 30px;
+    max-width: 280px;
+    transition: 0.5s ease;
+}
+
+.main-mockup {
+    transform: scale(1.1);
+    z-index: 2;
+}
+
+.mockup-img:hover {
+    transform: scale(1.15) rotate(2deg);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .main-mockup { transform: scale(1); }
+    .hero-header { min-height: 60vh; }
+}
+
+/* Color para títulos secundarios */
+.text-tangerine {
+    color: var(--tangerine-dream);
+}
+
+/* Estilo para las tarjetas de beneficios */
+.rounded-4 {
+    border-radius: 1.5rem !important;
+}
+
+/* Asegurar que el ancla de los botones no quede tapada por el navbar fijo */
+section {
+    scroll-margin-top: 80px;
+}
+
+/* Botón Outline en el Header */
+.btn-outline-light {
+    border: 2px solid white;
+    font-weight: 500;
+}
+
+.btn-outline-light:hover {
+    background-color: white;
+    color: var(--blue-slate);
+}
+
+#wishlist .rounded-4 {
+    border-radius: 2rem !important;
+}
+
+#wishlist .form-control-lg {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 15px;
+}
+
+#wishlist .form-control:focus {
+    box-shadow: none;
+    background-color: #f1f1f1;
+}
+
+/* Efecto de pulso para el botón de la wishlist para llamar la atención */
+.btn-action.shadow {
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% { box-shadow: 0 0 0 0px rgba(226, 149, 120, 0.4); }
+    100% { box-shadow: 0 0 0 20px rgba(226, 149, 120, 0); }
+}
+
+/* Clase especial para resaltar el botón de Lista de Espera */
+.btn-wishlist {
+    background: linear-gradient(135deg, #83c5be 0%, #4facfe 100%) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: 0 10px 20px rgba(131, 197, 190, 0.4) !important;
+}
+
+.btn-wishlist:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(131, 197, 190, 0.6) !important;
+    color: white !important;
+}
+
+/* Animación opcional para que el botón "vibre" suavemente cada 5 segundos */
+.btn-pulse {
+    animation: softPulse 4s infinite;
+}
+
+@keyframes softPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* Estilo Personalizado para el Acordeón FAQ */
+.accordion-item {
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 15px !important;
+    overflow: hidden;
+}
+
+.accordion-button {
+    background-color: white !important;
+    color: var(--blue-slate) !important;
+    padding: 20px;
+    box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--pearl-agua) !important;
+    background-color: #f8fdff !important;
+}
+
+.accordion-button::after {
+    filter: sepia(100%) hue-rotate(130deg) saturate(500%); /* Cambia el color de la flecha al Pearl Agua */
+}
+
+.accordion-body {
+    background-color: #f8fdff;
+    padding: 0 20px 20px 20px;
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes - PetCare Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --powder-blush: #FFA69E;
+            --alice-blue: #edf6f9;
+            --pearl-agua: #83c5be;
+            --light-blue: #AED9E0;
+            --blue-slate: #5E6472;
+            --tangerine-dream: #e29578;
+            --grad-primary: linear-gradient(135deg, #83c5be 0%, #a2d2ff 100%);
+            --grad-accent: linear-gradient(135deg, #FFA69E 0%, #e29578 100%);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fbff;
+            color: var(--blue-slate);
+        }
+
+        /* Sidebar (Misma estructura) */
+        .sidebar {
+            width: 280px;
+            height: calc(100vh - 40px);
+            margin: 20px;
+            border-radius: 30px;
+            background: var(--grad-primary);
+            color: white;
+            position: sticky;
+            top: 20px;
+            box-shadow: 0 20px 40px rgba(131, 197, 190, 0.3);
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.8);
+            border-radius: 15px;
+            margin-bottom: 8px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        /* Buscador Destacado */
+        .search-container {
+            background: white;
+            border-radius: 20px;
+            padding: 10px 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .search-container:focus-within {
+            border-color: var(--pearl-agua);
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Card de Paciente */
+        .patient-card {
+            background: white;
+            border: none;
+            border-radius: 25px;
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+        }
+
+        .patient-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(131, 197, 190, 0.2);
+        }
+
+        .patient-img {
+            height: 160px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 5px solid var(--alice-blue);
+        }
+
+        .badge-breed {
+            background: var(--alice-blue);
+            color: var(--pearl-agua);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 50px;
+        }
+
+        .btn-view-profile {
+            background: var(--grad-primary);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 15px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d-flex">
+        <nav class="sidebar d-none d-lg-block">
+            <div class="p-4">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold">🐾 PetCare</h3>
+                </div>
+                <hr>
+                <ul class="nav flex-column mt-4">
+                    <li class="nav-item">
+                        <a href="dashboard_vet.html" class="nav-link">📅 Citas de Hoy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">🐾 Pacientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">🩺 Inventario</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="flex-grow-1 p-5">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h2 class="fw-bold text-blue-slate">Mis Pacientes</h2>
+                    <p class="text-muted">Gestiona el historial de toda tu base de datos.</p>
+                </div>
+                <button class="btn btn-lg px-4 rounded-pill shadow-sm" style="background: var(--grad-accent); color: white; border: none; font-weight: 600;">+ Nuevo Paciente</button>
+            </div>
+
+            <div class="search-container mb-5 d-flex align-items-center">
+                <span class="fs-4 me-3">🔍</span>
+                <input type="text" class="search-input" placeholder="Buscar por nombre, dueño o especie...">
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-xl-4">
+                    <div class="patient-card">
+                        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=500&q=80" class="patient-img" alt="Toby">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h5 class="fw-bold mb-0">Toby</h5>
+                                    <small class="text-muted">Dueño: Juan Pérez</small>
+                                </div>
+                                <span class="badge-breed">Perro</span>
+                            </div>
+                            <p class="small text-muted mb-3">Última visita: 15 Ene 2026</p>
+                            <button class="btn-view-profile">Ver Expediente Completo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-4">
+                    <div class="patient-card">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80" class="patient-img" alt="Luna">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h5 class="fw-bold mb-0">Luna</h5>
+                                    <small class="text-muted">Dueño: Elena Ruiz</small>
+                                </div>
+                                <span class="badge-breed">Gato</span>
+                            </div>
+                            <p class="small text-muted mb-3">Última visita: 10 Ene 2026</p>
+                            <button class="btn-view-profile">Ver Expediente Completo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-4">
+                    <div class="patient-card">
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=500&q=80" class="patient-img" alt="Max">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h5 class="fw-bold mb-0">Max</h5>
+                                    <small class="text-muted">Dueño: Carlos Slim</small>
+                                </div>
+                                <span class="badge-breed">Perro</span>
+                            </div>
+                            <p class="small text-muted mb-3">Última visita: 02 Ene 2026</p>
+                            <button class="btn-view-profile">Ver Expediente Completo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
